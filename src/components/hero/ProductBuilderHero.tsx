@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, AnimatePresence, type Variants } from "framer-motion";
 import { OWNER_PROFILE } from "@/lib/constants";
@@ -13,14 +13,12 @@ import {
   Server,
   Sparkles,
   Workflow,
-  Pause,
-  Play,
 } from "lucide-react";
 
 /**
  * 5-Stage Product Lifecycle Model
  * Factual representation of Hamza Barki's engineering methodology,
- * strictly grounded in implemented code from Hadi Market POS and HisaabHub.
+ * strictly verified against source files in Hadi Market POS and HisaabHub.
  */
 interface LifecycleStage {
   id: string;
@@ -39,64 +37,64 @@ const LIFECYCLE_STAGES: LifecycleStage[] = [
     id: "idea",
     step: "01",
     title: "IDEA",
-    subtitle: "Problem Definition",
+    subtitle: "Problem Scoping",
     badge: "Operational Bottlenecks",
     problemOrGoal:
-      "Identify cashier checkout bottlenecks, manual credit tracking errors, and inventory discrepancies.",
+      "Map out cashier queues, unrecorded store credit, and inventory tracking needs.",
     technicalDeliverable:
-      "Workflow scoping, transaction requirements, and operational boundaries.",
-    verifiedArtifact: "Implemented in Hadi Market POS & HisaabHub",
+      "User workflow definition, receipt requirements, and architecture scope.",
+    verifiedArtifact: "Hadi Market POS & HisaabHub specifications",
     icon: Sparkles,
   },
   {
     id: "plan",
     step: "02",
     title: "PLAN",
-    subtitle: "System Architecture",
-    badge: "Data & Peripheral Layer",
+    subtitle: "Architecture",
+    badge: "Database & Peripherals",
     problemOrGoal:
-      "Structure reliable local database schemas and barcode/printer communication channels.",
+      "Structure persistent local schemas and hardware communication protocols.",
     technicalDeliverable:
-      "SQLite WAL configuration, USB HID keystroke listeners, and role-based access rules.",
-    verifiedArtifact: "ACID transactions & real-time Firestore synchronization",
+      "SQLite WAL schemas (POS) & Cloud Firestore data models (HisaabHub).",
+    verifiedArtifact: "SQL foreign keys & Firestore real-time listeners",
     icon: Database,
   },
   {
     id: "design",
     step: "03",
     title: "DESIGN",
-    subtitle: "Ergonomic Interface",
-    badge: "Speed-First UX",
+    subtitle: "Ergonomic UI",
+    badge: "Speed-Oriented UX",
     problemOrGoal:
-      "Design keyboard-driven checkout billing workflows with fast Enter-key entry.",
+      "Design fast cashier checkout workflows centered on Enter-key navigation.",
     technicalDeliverable:
-      "Tailwind responsive layout, CSS3 paged media print rules, bilingual English & Urdu support.",
-    verifiedArtifact: "Formatted for 58mm & 80mm thermal receipt printing",
+      "Tailwind responsive layout and CSS print rules for 58mm/80mm receipt rolls.",
+    verifiedArtifact: "CSS3 Paged Media thermal printing formatting",
     icon: Layers,
   },
   {
     id: "build",
     step: "04",
     title: "BUILD",
-    subtitle: "Full-Stack Implementation",
-    badge: "Application Codebase",
+    subtitle: "Implementation",
+    badge: "Full-Stack Code",
     problemOrGoal:
-      "Develop responsive frontend interfaces and structured REST API / cloud services.",
+      "Engineer reliable client interfaces and secure REST or cloud backend services.",
     technicalDeliverable:
-      "React 18, Vite/Next.js, Node.js Express REST API, and JWT authentication.",
-    verifiedArtifact: "Modular architecture with error boundaries and data validation",
+      "React 18 + Node Express REST API (POS), React + Firebase (HisaabHub).",
+    verifiedArtifact: "JWT authentication & dynamic ledger balance math",
     icon: Terminal,
   },
   {
     id: "deploy",
     step: "05",
     title: "DEPLOY",
-    subtitle: "Client System Launch",
-    badge: "Operational Setup",
+    subtitle: "Client Setup",
+    badge: "Operational Launch",
     problemOrGoal:
-      "Configure standalone system runtime that store staff can launch easily.",
+      "Deliver a stable desktop-web installation for local client store cashiers.",
     technicalDeliverable:
-      "Windows silent startup launcher and automated local database backup scripts.",
+      "Windows silent background batch launcher and automated SQLite backup scripts.",
     verifiedArtifact: "Installed on client store system (Hadi Market POS)",
     icon: Server,
   },
@@ -105,28 +103,11 @@ const LIFECYCLE_STAGES: LifecycleStage[] = [
 export function ProductBuilderHero() {
   const shouldReduceMotion = useReducedMotion();
   const [activeStageIndex, setActiveStageIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
-  const [isUserPaused, setIsUserPaused] = useState(false);
 
-  // Tabs DOM reference for roving tabIndex and keyboard navigation
+  // Tabs DOM reference array for roving tabIndex and keyboard navigation
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Effective pause state: pauses if user explicitly toggled pause, or is hovering/focusing
-  const isPaused = shouldReduceMotion || isUserPaused || isHovered || isFocused;
-
-  // Subtle auto-advance cycle across stages (4.5s)
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      setActiveStageIndex((prev) => (prev + 1) % LIFECYCLE_STAGES.length);
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  // Handle keyboard navigation according to WAI-ARIA Tabs Design Pattern
+  // Keyboard navigation strictly adhering to WAI-ARIA Tabs Design Pattern
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
     let nextIndex = index;
 
@@ -153,25 +134,26 @@ export function ProductBuilderHero() {
   const activeStage = LIFECYCLE_STAGES[activeStageIndex];
   const IconComponent = activeStage.icon;
 
-  // Staggered motion variants
+  // Staggered motion variants — zero motion when prefers-reduced-motion is active
   const containerVariants: Variants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: shouldReduceMotion ? 0 : 0.08,
         delayChildren: shouldReduceMotion ? 0 : 0.05,
+        duration: shouldReduceMotion ? 0 : 0.4,
       },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 16 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0.01 : 0.45,
+        duration: shouldReduceMotion ? 0 : 0.45,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
@@ -190,7 +172,7 @@ export function ProductBuilderHero() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
         >
           {/* =================================================================== */}
-          {/* LEFT COLUMN: Editorial Value Proposition & Direct Conversion Path   */}
+          {/* LEFT COLUMN: Value Proposition & Direct Conversion Path             */}
           {/* =================================================================== */}
           <div className="lg:col-span-7 space-y-5 sm:space-y-6">
             {/* 1. Identity & Availability Line */}
@@ -211,7 +193,7 @@ export function ProductBuilderHero() {
               </span>
             </motion.div>
 
-            {/* 2. Main Expressive Headline */}
+            {/* 2. Primary Headline */}
             <motion.div variants={itemVariants} className="space-y-3">
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-brand-navy leading-[1.14]">
                 I build digital products that solve{" "}
@@ -238,7 +220,7 @@ export function ProductBuilderHero() {
               </p>
             </motion.div>
 
-            {/* 4. Primary & Secondary Conversion Actions */}
+            {/* 4. Conversion Actions */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 pt-1">
               <a
                 href={OWNER_PROFILE.contacts.whatsapp}
@@ -285,7 +267,7 @@ export function ProductBuilderHero() {
                   Focus
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-brand-green">
-                  Practical Business Systems
+                  Business Systems & PWAs
                 </span>
               </div>
             </motion.div>
@@ -294,20 +276,9 @@ export function ProductBuilderHero() {
           {/* =================================================================== */}
           {/* RIGHT COLUMN: Signature Product-Builder Interactive Blueprint Visual */}
           {/* =================================================================== */}
-          <motion.div
-            variants={itemVariants}
-            className="lg:col-span-5"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget)) {
-                setIsFocused(false);
-              }
-            }}
-          >
+          <motion.div variants={itemVariants} className="lg:col-span-5">
             <div className="relative mx-auto max-w-md lg:max-w-none bg-brand-navy text-white rounded-2xl shadow-elevated border border-brand-navy-700 overflow-hidden">
-              {/* Header: Neutral Identity Lockup (No fake verification badges) */}
+              {/* Header: Neutral Professional Identity Lockup */}
               <div className="p-4 sm:p-5 bg-brand-navy-900/60 border-b border-brand-navy-700 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-brand-yellow shrink-0 bg-brand-navy-950">
@@ -338,7 +309,7 @@ export function ProductBuilderHero() {
                     Core Stack
                   </span>
                   <span className="text-xs font-mono font-medium text-brand-navy-100">
-                    Next · Node · SQL
+                    React · Node · SQL
                   </span>
                 </div>
               </div>
@@ -350,25 +321,12 @@ export function ProductBuilderHero() {
                     <Workflow className="w-3.5 h-3.5" />
                     <span>Product Lifecycle Workflow</span>
                   </span>
-
-                  {/* Accessible Rotation Controls */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setIsUserPaused((prev) => !prev)}
-                      aria-label={isUserPaused ? "Play lifecycle auto-rotation" : "Pause lifecycle auto-rotation"}
-                      className="text-brand-navy-300 hover:text-brand-yellow transition-colors p-1 rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-blue"
-                      title={isUserPaused ? "Play rotation" : "Pause rotation"}
-                    >
-                      {isUserPaused ? <Play className="w-3 h-3" /> : <Pause className="w-3 h-3" />}
-                    </button>
-                    <span className="text-[10px] font-mono text-brand-navy-300">
-                      {activeStage.step}/05
-                    </span>
-                  </div>
+                  <span className="text-[10px] font-mono text-brand-navy-300">
+                    Stage {activeStage.step}/05
+                  </span>
                 </div>
 
-                {/* Keyboard Accessible WAI-ARIA Tablist with Roving tabIndex */}
+                {/* Keyboard Accessible WAI-ARIA Tablist with Stable aria-controls */}
                 <div
                   role="tablist"
                   aria-label="Development lifecycle stages"
@@ -384,7 +342,7 @@ export function ProductBuilderHero() {
                         }}
                         role="tab"
                         aria-selected={isActive}
-                        aria-controls={`stage-panel-${stage.id}`}
+                        aria-controls="lifecycle-stage-panel"
                         id={`stage-tab-${stage.id}`}
                         tabIndex={isActive ? 0 : -1}
                         onClick={() => {
@@ -409,9 +367,9 @@ export function ProductBuilderHero() {
                 </div>
               </div>
 
-              {/* Dynamic Stage Canvas Panel */}
+              {/* Single Stable WAI-ARIA Tabpanel referenced by all tabs */}
               <div
-                id={`stage-panel-${activeStage.id}`}
+                id="lifecycle-stage-panel"
                 role="tabpanel"
                 aria-labelledby={`stage-tab-${activeStage.id}`}
                 className="px-4 sm:px-5 pb-5 pt-1 min-h-[210px] flex flex-col justify-between"
@@ -419,10 +377,10 @@ export function ProductBuilderHero() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeStage.id}
-                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
+                    initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -6 }}
-                    transition={{ duration: shouldReduceMotion ? 0.01 : 0.18 }}
+                    exit={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : -6 }}
+                    transition={{ duration: shouldReduceMotion ? 0 : 0.18 }}
                     className="space-y-3"
                   >
                     <div className="flex items-center justify-between border-b border-brand-navy-700/70 pb-2">
@@ -447,7 +405,7 @@ export function ProductBuilderHero() {
                     <div className="space-y-2">
                       <div className="p-2 sm:p-2.5 rounded-lg bg-brand-navy-900/60 border border-brand-navy-700/80">
                         <span className="text-[10px] font-mono uppercase tracking-wider text-brand-navy-300 block">
-                          Operational Challenge
+                          Operational Focus
                         </span>
                         <p className="text-xs text-white mt-0.5 leading-relaxed">
                           {activeStage.problemOrGoal}
@@ -456,7 +414,7 @@ export function ProductBuilderHero() {
 
                       <div className="p-2 sm:p-2.5 rounded-lg bg-surface-dark-card border border-brand-navy-700/80">
                         <span className="text-[10px] font-mono uppercase tracking-wider text-brand-yellow block">
-                          Engineering Deliverable
+                          Technical Architecture
                         </span>
                         <p className="text-xs text-brand-navy-100 mt-0.5 leading-relaxed">
                           {activeStage.technicalDeliverable}
@@ -486,7 +444,7 @@ export function ProductBuilderHero() {
                   href="#work"
                   className="text-brand-yellow hover:text-white transition-colors flex items-center gap-1 text-[11px] font-semibold focus-visible:outline-none focus-visible:underline"
                 >
-                  <span>See Live Systems</span>
+                  <span>Explore Case Studies</span>
                   <ArrowRight className="w-3 h-3" />
                 </a>
               </div>
