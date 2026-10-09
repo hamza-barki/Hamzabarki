@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Direction Studies — Hamza Barki</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Custom font styling simulations for the three concepts */
+    .font-editorial { font-family: "Georgia", "Times New Roman", serif; }
+    .font-builder { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .font-brand { font-family: "Trebuchet MS", "Lucida Sans", sans-serif; }
+    .font-code { font-family: "Courier New", Courier, monospace; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8 antialiased">
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- Header Bar -->
+    <header class="border-b border-slate-800 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+          Phase 01 Creative Exploration
+        </div>
+        <h1 class="text-2xl md:text-3xl font-extrabold text-white mt-2 tracking-tight">
+          Hamza Barki — Visual Direction Studies
+        </h1>
+        <p class="text-sm text-slate-400 mt-1">
+          Interactive evaluation of three distinct art directions for the developer portfolio.
+        </p>
+      </div>
+
+      <!-- Concept Switcher Tabs -->
+      <div class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-800 border border-slate-700">
+        <button onclick="switchConcept('conceptB')" id="btn-conceptB" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow">
+          Concept B (Recommended)
+        </button>
+        <button onclick="switchConcept('conceptA')" id="btn-conceptA" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
+          Concept A (Editorial Craft)
+        </button>
+        <button onclick="switchConcept('conceptC')" id="btn-conceptC" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
+          Concept C (Bold Brand)
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- CONCEPT B: INTERACTIVE PRODUCT BUILDER (WINNER & RECOMMENDED)            -->
+    <!-- ========================================================================= -->
+    <section id="panel-conceptB" class="space-y-6">
+      <div class="bg-slate-800/60 border border-amber-400/30 rounded-2xl p-6 md:p-8 backdrop-blur">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="text-xs font-bold tracking-widest uppercase text-amber-400">Winning Direction · Interactive Product Builder</span>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded bg-slate-700 text-slate-300 font-mono">Peshawar → Global Clients</span>
+        </div>
+
+        <!-- Concept Preview Box -->
+        <div class="rounded-xl border border-slate-700 bg-slate-950 p-6 md:p-8 space-y-6">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-800">
+            <div>
+              <p class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Available for selected projects
+              </p>
+              <h2 class="text-2xl md:text-4xl font-extrabold text-white mt-2 leading-tight">
+                Hamza Barki builds digital products that solve <span class="text-amber-400">real business problems</span>—from idea to deployment.
+              </h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Left: Builder Blueprint -->
+            <div class="md:col-span-7 space-y-4">
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Full-stack engineering focused on tangible business utility: custom retail POS engines, thermal printer & USB scanner hardware workflows, and real-time ledger PWAs.
+              </p>
+              <div class="grid grid-cols-3 gap-3 pt-2 text-center">
+                <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                  <p class="text-xs text-slate-400 font-mono">Degree</p>
+                  <p class="text-sm font-bold text-white mt-1">BS CS Final Year</p>
+                  <p class="text-[11px] text-slate-500">UoP Peshawar</p>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                  <p class="text-xs text-slate-400 font-mono">Training</p>
+                  <p class="text-sm font-bold text-white mt-1">Full-Stack</p>
+                  <p class="text-[11px] text-slate-500">SMIT Certified</p>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                  <p class="text-xs text-slate-400 font-mono">Real Work</p>
+                  <p class="text-sm font-bold text-emerald-400 mt-1">Active Client POS</p>
+                  <p class="text-[11px] text-slate-500">Installed in Store</p>
+                </div>
+              </div>
+
+              <!-- Lifecycle Flow Wireframe -->
+              <div class="p-4 rounded-lg bg-slate-900/80 border border-slate-800">
+                <p class="text-xs font-mono uppercase tracking-wider text-amber-400 mb-2">Signature Lifecycle Workflow</p>
+                <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+                  <span class="text-blue-400">IDEA</span>
+                  <span class="text-slate-600">→</span>
+                  <span class="text-blue-400">PLAN</span>
+                  <span class="text-slate-600">→</span>
+                  <span class="text-blue-400">DESIGN</span>
+                  <span class="text-slate-600">→</span>
+                  <span class="text-blue-400">BUILD</span>
+                  <span class="text-slate-600">→</span>
+                  <span class="text-amber-400">DEPLOY</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Product Artifact Simulation -->
+            <div class="md:col-span-5 rounded-xl border border-slate-800 bg-slate-900 p-4 space-y-3">
+              <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                <span class="text-xs font-mono text-slate-400">Verified Project Proof</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono">Live In Store</span>
+              </div>
+              <h3 class="text-base font-bold text-white">Hadi Market POS</h3>
+              <p class="text-xs text-slate-400">
+                React 18 · Express · SQLite 3 WAL · USB Barcode Scanner Keystrokes · Thermal Receipt Formatting
+              </p>
+              <div class="p-3 rounded bg-slate-950 border border-slate-800 font-mono text-[11px] text-slate-400 space-y-1">
+                <p class="text-amber-400">> Barcode gun instant event buffer</p>
+                <p class="text-emerald-400">> SQLite ACID Udhaar debt ledger</p>
+                <p class="text-blue-400">> Silent Windows background launcher</p>
+              </div>
+              <div class="pt-2 flex justify-between items-center text-xs">
+                <span class="text-slate-400">Proof-first, zero fluff</span>
+                <span class="text-amber-400 font-semibold">View Case Study →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluation Specs -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-amber-400 mb-1">First-Impression & Conversion</h4>
+            <p class="text-slate-400">Immediately answers "Can he build real software for my business?" by showcasing functional system architecture and production evidence.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-amber-400 mb-1">Authenticity Alignment</h4>
+            <p class="text-slate-400">100% matched to Hamza's verified achievements. Zero exaggerated years of experience; lets the depth of the POS and HisaabHub work speak for itself.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-amber-400 mb-1">Performance & Accessibility</h4>
+            <p class="text-slate-400">Pure CSS/DOM layout without heavy WebGL canvases or scroll hijack. High contrast, mobile-first, and lightweight bundle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- CONCEPT A: EDITORIAL DIGITAL CRAFT                                       -->
+    <!-- ========================================================================= -->
+    <section id="panel-conceptA" class="space-y-6 hidden">
+      <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 md:p-8 backdrop-blur">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <span class="text-xs font-bold tracking-widest uppercase text-blue-400">Concept A · Editorial Digital Craft</span>
+          <span class="text-xs px-2.5 py-1 rounded bg-slate-700 text-slate-300 font-mono">Refined & Thoughtful</span>
+        </div>
+
+        <div class="rounded-xl border border-slate-700 bg-white text-slate-900 p-6 md:p-8 space-y-6">
+          <div class="max-w-xl">
+            <span class="text-xs font-serif uppercase tracking-widest text-slate-500">Independent Software Practice</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-slate-950 mt-3 leading-tight tracking-tight">
+              Hamza Barki — Crafting resilient digital systems from Peshawar to the world.
+            </h2>
+            <p class="text-sm font-sans text-slate-600 mt-4 leading-relaxed">
+              An editorial approach emphasizing clarity of thought, patient system architecture, and unhurried problem-solving.
+            </p>
+          </div>
+
+          <div class="border-t border-slate-200 pt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-700">
+            <div>
+              <p class="font-serif italic text-base text-slate-900 mb-1">Case 01 / Hadi Market POS</p>
+              <p class="text-slate-600 leading-relaxed">
+                A localized retail management system built from ground up to stabilize retail cashflow and inventory precision.
+              </p>
+            </div>
+            <div>
+              <p class="font-serif italic text-base text-slate-900 mb-1">Case 02 / HisaabHub</p>
+              <p class="text-slate-600 leading-relaxed">
+                Shared bookkeeping ledger designed for communal credit transparency with cloud synchronization.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluation Specs -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-blue-400 mb-1">Strengths</h4>
+            <p class="text-slate-400">Highly sophisticated, serene reading experience, generous whitespace, avoids typical tech clichés.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-blue-400 mb-1">Weaknesses</h4>
+            <p class="text-slate-400">Can feel slightly detached or academic; misses the immediate punch of hands-on technical and POS hardware proof that clients seek.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-blue-400 mb-1">Verdict</h4>
+            <p class="text-slate-400">Borrow its typographic restraint and whitespace discipline into the winning direction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- CONCEPT C: BOLD MODERN PERSONAL BRAND                                    -->
+    <!-- ========================================================================= -->
+    <section id="panel-conceptC" class="space-y-6 hidden">
+      <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 md:p-8 backdrop-blur">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <span class="text-xs font-bold tracking-widest uppercase text-emerald-400">Concept C · Bold Modern Personal Brand</span>
+          <span class="text-xs px-2.5 py-1 rounded bg-slate-700 text-slate-300 font-mono">High Energy & Contrast</span>
+        </div>
+
+        <div class="rounded-xl border border-slate-700 bg-slate-950 p-6 md:p-8 space-y-6">
+          <div class="space-y-4">
+            <div class="inline-block px-3 py-1 bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded">
+              FULL-STACK DEVELOPER
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase leading-none">
+              HAMZA BARKI.<br><span class="text-slate-600">PRODUCT BUILDER.</span>
+            </h2>
+            <p class="text-base text-slate-300 max-w-xl font-medium">
+              TURNING COMPLEX BUSINESS LOGIC INTO HIGH-PERFORMANCE WEB APPS & RETAIL SYSTEMS.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+            <div class="p-4 bg-slate-900 border-l-4 border-amber-400">
+              <span class="text-2xl font-black text-white">01</span>
+              <p class="text-xs font-bold text-slate-300 uppercase mt-1">POS HARDWARE & SYSTEMS</p>
+            </div>
+            <div class="p-4 bg-slate-900 border-l-4 border-blue-500">
+              <span class="text-2xl font-black text-white">02</span>
+              <p class="text-xs font-bold text-slate-300 uppercase mt-1">REAL-TIME CLOUD APPS</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluation Specs -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-emerald-400 mb-1">Strengths</h4>
+            <p class="text-slate-400">Instant visual impact, highly memorable silhouette, strong contrast for mobile viewing.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-emerald-400 mb-1">Weaknesses</h4>
+            <p class="text-slate-400">Aggressive scale risks feeling slightly hyper-confident; may overpower the nuance and engineering care of the retail POS case study.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/60">
+            <h4 class="font-bold text-emerald-400 mb-1">Verdict</h4>
+            <p class="text-slate-400">Borrow its crisp hierarchy and assertive confidence, but soften the aggression with Concept B's product focus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- COMPARISON MATRIX & WINNING SYNTHESIS                                    -->
+    <!-- ========================================================================= -->
+    <section class="border border-slate-800 bg-slate-800/40 rounded-2xl p-6 md:p-8 space-y-6">
+      <h3 class="text-lg font-bold text-white flex items-center gap-2">
+        <span>Architectural Comparison & Winning Direction Synthesis</span>
+      </h3>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 text-slate-400">
+              <th class="py-3 px-3">Evaluation Criteria</th>
+              <th class="py-3 px-3">Concept A (Editorial Craft)</th>
+              <th class="py-3 px-3 text-amber-400 font-bold bg-amber-400/10 rounded-t">Concept B (Product Builder) ★</th>
+              <th class="py-3 px-3">Concept C (Bold Brand)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr>
+              <td class="py-3 px-3 font-semibold text-white">First-Impression Impact</td>
+              <td class="py-3 px-3">Subtle, slow burn</td>
+              <td class="py-3 px-3 font-semibold text-white bg-amber-400/5">Immediate & clear business focus</td>
+              <td class="py-3 px-3">Very high, high energy</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold text-white">Professional Credibility</td>
+              <td class="py-3 px-3">High (intellectual)</td>
+              <td class="py-3 px-3 font-semibold text-emerald-400 bg-amber-400/5">Highest (real working systems)</td>
+              <td class="py-3 px-3">Moderate (can feel boastful)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold text-white">Fit with Verified Project Proof</td>
+              <td class="py-3 px-3">Moderate</td>
+              <td class="py-3 px-3 font-semibold text-emerald-400 bg-amber-400/5">Perfect (POS & HisaabHub live proof)</td>
+              <td class="py-3 px-3">Moderate</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold text-white">Client Trust & Conversion</td>
+              <td class="py-3 px-3">High for consulting</td>
+              <td class="py-3 px-3 font-semibold text-emerald-400 bg-amber-400/5">Highest for web/app project hiring</td>
+              <td class="py-3 px-3">Good for quick impact</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold text-white">Mobile Performance</td>
+              <td class="py-3 px-3">Excellent</td>
+              <td class="py-3 px-3 font-semibold text-white bg-amber-400/5">Excellent (sub-110kB first load)</td>
+              <td class="py-3 px-3">Good</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200">
+        <strong class="text-amber-400 font-bold">Winning Strategic Synthesis:</strong> We choose <strong>Concept B (Interactive Product Builder)</strong> as the winning master direction, enriched with the typography discipline and generous whitespace of Concept A, plus the punchy contrast of Concept C. This presents Hamza as an authentic, high-capability product engineer who delivers working digital solutions from idea to deployment.
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function switchConcept(id) {
+      document.getElementById('panel-conceptA').classList.add('hidden');
+      document.getElementById('panel-conceptB').classList.add('hidden');
+      document.getElementById('panel-conceptC').classList.add('hidden');
+
+      document.getElementById('btn-conceptA').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white";
+      document.getElementById('btn-conceptB').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white";
+      document.getElementById('btn-conceptC').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white";
+
+      document.getElementById('panel-' + id).classList.remove('hidden');
+
+      if (id === 'conceptB') {
+        document.getElementById('btn-conceptB').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow";
+      } else if (id === 'conceptA') {
+        document.getElementById('btn-conceptA').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-500 text-white shadow";
+      } else if (id === 'conceptC') {
+        document.getElementById('btn-conceptC').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-white shadow";
+      }
+    }
+  </script>
+</body>
+</html>

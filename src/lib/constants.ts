@@ -33,7 +33,6 @@ export const OWNER_PROFILE = {
   contacts: {
     email: "hamzabarki330@gmail.com",
     whatsapp: "https://wa.me/message/C7IX2L6KIRPDA1",
-    whatsappDisplay: "+92 316 9363065", // from verified whatsapp link or format
     github: "https://github.com/hamza-barki",
     facebook: "https://web.facebook.com/profile.php?id=61573175301827",
   },
