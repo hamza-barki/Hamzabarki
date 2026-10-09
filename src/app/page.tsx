@@ -1,25 +1,14 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ProductBuilderHero } from "@/components/hero/ProductBuilderHero";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 import { OWNER_PROFILE } from "@/lib/constants";
 import { PROJECTS } from "@/lib/projects-data";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Database,
-  Layers,
-  Terminal,
-  Cpu,
-  Monitor,
-  ExternalLink,
-  MessageCircle,
-  Mail,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle, Mail } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -28,138 +17,9 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* ========================================================================= */}
-        {/* HERO SECTION — Strategic Positioning & Real Profile Wireframe            */}
+        {/* HERO SECTION — Premium Interactive Product Builder & Identity System     */}
         {/* ========================================================================= */}
-        <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden border-b border-border-subtle bg-gradient-to-b from-white to-surface-base">
-          <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              {/* Left Column: Proposition & Call to Action */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-navy-50 border border-brand-navy-100 text-xs font-semibold text-brand-navy">
-                  <span className="w-2 h-2 rounded-full bg-brand-yellow"></span>
-                  <span>{OWNER_PROFILE.title} · Peshawar, Pakistan</span>
-                </div>
-
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-brand-navy leading-[1.15]">
-                  Building digital products that solve{" "}
-                  <span className="text-brand-blue underline decoration-brand-yellow decoration-4 underline-offset-4">
-                    real business problems
-                  </span>
-                  —from idea to deployment.
-                </h1>
-
-                <p className="text-base sm:text-lg text-ink-secondary leading-relaxed max-w-2xl">
-                  I help founders and store owners transform operational requirements into dependable, fast, and production-ready software. From custom retail systems and POS hardware integrations to cloud-synced web applications.
-                </p>
-
-                {/* Proof Highlights */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
-                  <div className="p-3 rounded-lg bg-surface-card border border-border-subtle shadow-subtle">
-                    <p className="text-xs text-ink-muted">Education</p>
-                    <p className="text-sm font-bold text-ink pt-0.5">BS CS (Final Year)</p>
-                    <p className="text-[11px] text-ink-muted">Univ. of Peshawar</p>
-                  </div>
-                  <div className="p-3 rounded-lg bg-surface-card border border-border-subtle shadow-subtle">
-                    <p className="text-xs text-ink-muted">Training</p>
-                    <p className="text-sm font-bold text-ink pt-0.5">Full-Stack Web</p>
-                    <p className="text-[11px] text-ink-muted">SMIT Certified</p>
-                  </div>
-                  <div className="p-3 rounded-lg bg-surface-card border border-border-subtle shadow-subtle col-span-2 sm:col-span-1">
-                    <p className="text-xs text-ink-muted">Production Work</p>
-                    <p className="text-sm font-bold text-ink pt-0.5">Real Client Systems</p>
-                    <p className="text-[11px] text-ink-muted">Installed & Deployed</p>
-                  </div>
-                </div>
-
-                {/* Primary CTA Row */}
-                <div className="flex flex-wrap items-center gap-4 pt-4">
-                  <a
-                    href="#work"
-                    className="inline-flex items-center gap-2 h-12 px-6 rounded-lg bg-brand-navy text-white font-medium hover:bg-brand-navy-700 transition-colors shadow-subtle"
-                  >
-                    <span>View Proven Work</span>
-                    <ArrowRight className="w-4 h-4 text-brand-yellow" />
-                  </a>
-
-                  <a
-                    href={OWNER_PROFILE.contacts.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 h-12 px-6 rounded-lg bg-surface-card text-brand-navy border border-border-medium font-medium hover:bg-surface-muted transition-colors"
-                  >
-                    <MessageCircle className="w-4 h-4 text-emerald-600" />
-                    <span>Chat on WhatsApp</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Column: Architectural Profile Card & Authentic Portrait */}
-              <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-md bg-brand-navy text-white rounded-2xl p-6 sm:p-8 shadow-elevated border border-brand-navy-700">
-                  <div className="flex items-center gap-4 pb-6 border-b border-brand-navy-700">
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-brand-yellow shrink-0 bg-brand-navy-900">
-                      <Image
-                        src="/images/hamza.webp"
-                        alt="Hamza Barki — Full-Stack Developer"
-                        width={64}
-                        height={64}
-                        className="object-cover"
-                        priority
-                      />
-                    </div>
-                    <div>
-                      <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                        {OWNER_PROFILE.name}
-                        <CheckCircle2 className="w-4 h-4 text-brand-green" />
-                      </h2>
-                      <p className="text-xs text-ink-inverted-muted">
-                        Full-Stack Software Builder
-                      </p>
-                      <p className="text-xs text-brand-yellow font-medium mt-0.5">
-                        {OWNER_PROFILE.availability.status}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Architectural Blueprint Spec */}
-                  <div className="pt-6 space-y-4">
-                    <div className="text-xs font-mono uppercase tracking-wider text-ink-inverted-muted flex items-center justify-between">
-                      <span>Stack Core</span>
-                      <span>Next.js · React · Node · SQL</span>
-                    </div>
-
-                    <div className="space-y-2.5">
-                      <div className="flex items-start gap-3 p-3 rounded-lg bg-surface-dark-card border border-brand-navy-600">
-                        <Terminal className="w-4 h-4 text-brand-yellow shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-xs font-semibold text-white">Full-Stack Capability</p>
-                          <p className="text-[12px] text-brand-navy-200">
-                            Frontend UI, REST API gateways, SQLite/Firestore schemas, and client deployment scripts.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-3 p-3 rounded-lg bg-surface-dark-card border border-brand-navy-600">
-                        <Cpu className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" />
-                        <div>
-                          <p className="text-xs font-semibold text-white">Hardware & Peripheral Integration</p>
-                          <p className="text-[12px] text-brand-navy-200">
-                            Hands-on experience configuring USB barcode scanner readers and thermal receipt printers.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-2 text-[11px] text-brand-navy-300 font-mono flex justify-between items-center">
-                      <span>Status: Phase 1 Foundation</span>
-                      <span className="text-brand-green font-semibold">● Ready</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
+        <ProductBuilderHero />
 
         {/* ========================================================================= */}
         {/* SELECTED WORK — Real Client Project Proof                                 */}
