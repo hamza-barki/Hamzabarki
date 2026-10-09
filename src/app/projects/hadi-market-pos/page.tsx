@@ -116,11 +116,23 @@ export default function HadiMarketPosPage() {
             </div>
           </div>
 
-          {/* Next phase notice */}
-          <div className="mt-12 p-5 rounded-lg border border-dashed border-border-strong text-center text-xs text-ink-muted">
-            <p>
-              [Phase 1 Architecture Shell] Full deep-dive case study with workflow diagrams, code breakdowns, and production screenshots will be fully implemented in the dedicated Case Study phase.
-            </p>
+          {/* Note: Full deep-dive case study with workflow diagrams and production screenshots scheduled for Phase 04 */}
+          <div className="mt-12 p-6 rounded-xl bg-surface-card border border-border-subtle shadow-subtle flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 className="text-sm font-bold text-brand-navy">Looking for a live walkthrough?</h4>
+              <p className="text-xs text-ink-secondary mt-0.5">
+                Full interactive workflow diagrams and production screenshots will be published in the upcoming case-study release.
+              </p>
+            </div>
+            <a
+              href={OWNER_PROFILE.contacts.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-navy text-white text-xs font-medium hover:bg-brand-navy-700 transition-colors shrink-0"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-brand-yellow" />
+              <span>Discuss This System</span>
+            </a>
           </div>
         </Container>
       </main>

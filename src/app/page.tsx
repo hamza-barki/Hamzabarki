@@ -99,8 +99,8 @@ export default function HomePage() {
                   <div className="flex items-center gap-4 pb-6 border-b border-brand-navy-700">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-brand-yellow shrink-0 bg-brand-navy-900">
                       <Image
-                        src="/images/hamza.png"
-                        alt="Hamza Barki"
+                        src="/images/hamza.webp"
+                        alt="Hamza Barki — Full-Stack Developer"
                         width={64}
                         height={64}
                         className="object-cover"

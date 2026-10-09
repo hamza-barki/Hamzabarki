@@ -30,15 +30,15 @@
         </p>
       </div>
 
-      <!-- Concept Switcher Tabs -->
-      <div class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-800 border border-slate-700">
-        <button onclick="switchConcept('conceptB')" id="btn-conceptB" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow">
+      <!-- Concept Switcher Tabs (Accessible Tablist) -->
+      <div role="tablist" aria-label="Creative direction concepts" class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-800 border border-slate-700">
+        <button role="tab" aria-selected="true" aria-controls="panel-conceptB" onclick="switchConcept('conceptB')" id="btn-conceptB" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow focus:outline-none focus:ring-2 focus:ring-amber-400">
           Concept B (Recommended)
         </button>
-        <button onclick="switchConcept('conceptA')" id="btn-conceptA" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
+        <button role="tab" aria-selected="false" aria-controls="panel-conceptA" onclick="switchConcept('conceptA')" id="btn-conceptA" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400">
           Concept A (Editorial Craft)
         </button>
-        <button onclick="switchConcept('conceptC')" id="btn-conceptC" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white">
+        <button role="tab" aria-selected="false" aria-controls="panel-conceptC" onclick="switchConcept('conceptC')" id="btn-conceptC" class="px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-emerald-400">
           Concept C (Bold Brand)
         </button>
       </div>
@@ -321,25 +321,46 @@
   </div>
 
   <script>
+    const concepts = ['conceptB', 'conceptA', 'conceptC'];
     function switchConcept(id) {
       document.getElementById('panel-conceptA').classList.add('hidden');
       document.getElementById('panel-conceptB').classList.add('hidden');
       document.getElementById('panel-conceptC').classList.add('hidden');
 
-      document.getElementById('btn-conceptA').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white";
-      document.getElementById('btn-conceptB').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white";
-      document.getElementById('btn-conceptC').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white";
+      concepts.forEach(c => {
+        const btn = document.getElementById('btn-' + c);
+        btn.setAttribute('aria-selected', 'false');
+        btn.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white focus:outline-none focus:ring-2";
+      });
 
       document.getElementById('panel-' + id).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + id);
+      activeBtn.setAttribute('aria-selected', 'true');
 
       if (id === 'conceptB') {
-        document.getElementById('btn-conceptB').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow";
+        activeBtn.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-amber-400 text-slate-950 shadow focus:outline-none focus:ring-2 focus:ring-amber-400";
       } else if (id === 'conceptA') {
-        document.getElementById('btn-conceptA').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-500 text-white shadow";
+        activeBtn.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-blue-500 text-white shadow focus:outline-none focus:ring-2 focus:ring-blue-400";
       } else if (id === 'conceptC') {
-        document.getElementById('btn-conceptC').className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-white shadow";
+        activeBtn.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-white shadow focus:outline-none focus:ring-2 focus:ring-emerald-400";
       }
     }
+
+    document.addEventListener('keydown', (e) => {
+      const active = document.querySelector('[role="tab"][aria-selected="true"]');
+      if (!active) return;
+      const currentId = active.id.replace('btn-', '');
+      let idx = concepts.indexOf(currentId);
+      if (e.key === 'ArrowRight') {
+        idx = (idx + 1) % concepts.length;
+        switchConcept(concepts[idx]);
+        document.getElementById('btn-' + concepts[idx]).focus();
+      } else if (e.key === 'ArrowLeft') {
+        idx = (idx - 1 + concepts.length) % concepts.length;
+        switchConcept(concepts[idx]);
+        document.getElementById('btn-' + concepts[idx]).focus();
+      }
+    });
   </script>
 </body>
 </html>
