@@ -3,15 +3,81 @@
 @tailwind utilities;
 
 :root {
-  /* Core brand tokens matching design system */
+  /* Day Theme Tokens */
+  --bg-primary: #F5F7FA;
+  --surface-card: #FFFFFF;
+  --surface-muted: #EDF2F7;
+  --text-primary: #1E293B;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --border-color: #E2E8F0;
+  --border-medium: #CBD5E1;
+
+  /* Brand Accents */
+  --accent-yellow: #FFC107;
+  --accent-blue: #2E80FF;
+  --accent-green: #00B87A;
   --brand-navy: #0B1F38;
-  --brand-yellow: #FFC107;
-  --brand-blue: #2E80FF;
-  --brand-green: #00B87A;
-  --surface-base: #F5F7FA;
-  --ink-primary: #1E293B;
-  --ink-secondary: #475569;
-  --border-subtle: #E2E8F0;
+
+  /* Safe Area Notch Tokens */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Hero "EXPERIENCES." Outline Stroke in Background Color (paint-order stroke) */
+  --hero-stroke: #FFFFFF;
+
+  /* Prompt H Theme Tokens - Day */
+  --hero-bg-from: #F4F6F9;
+  --hero-bg-to: #FFFFFF;
+  --hero-ink: #0F172A;
+  --hero-body: #334155;
+  --hero-muted: #475569;
+  --hero-blue-fill-1: #CFE3FF;
+  --hero-blue-fill-2: #BFDBFE;
+  --hero-blue-fill-3: #A9CCFA;
+  --hero-blue-fill-4: #DCEBFF;
+  --hero-accent-blue: #1D5FD6;
+  --hero-border: #CBD5E1;
+}
+
+.dark {
+  /* Night Theme Tokens (Deep Navy, No Pure Black, No Neon) */
+  --bg-primary: #071322;
+  --surface-card: #0B1F38;
+  --surface-muted: #132A4A;
+  --text-primary: #E6EDF7;
+  --text-secondary: #B3C7DC;
+  --text-muted: #94A3B8;
+  --border-color: #1E3A5F;
+  --border-medium: #2A4870;
+
+  /* Brand Accents (Yellow stays vibrant accent) */
+  --accent-yellow: #FFC107;
+  --accent-blue: #2E80FF;
+  --accent-green: #00B87A;
+  --brand-navy: #0B1F38;
+
+  /* Hero "EXPERIENCES." Outline Stroke in Night Mode Background Color */
+  --hero-stroke: #0B1220;
+
+  /* Prompt H Theme Tokens - Night */
+  --hero-bg-from: #0B1220;
+  --hero-bg-to: #0F1A2E;
+  --hero-ink: #E6EDF7;
+  --hero-body: #B6C2D6;
+  --hero-muted: #94A3B8;
+  --hero-blue-fill-1: rgba(142, 197, 255, 0.22);
+  --hero-blue-fill-2: rgba(142, 197, 255, 0.25);
+  --hero-blue-fill-3: rgba(142, 197, 255, 0.30);
+  --hero-blue-fill-4: rgba(142, 197, 255, 0.18);
+  --hero-accent-blue: #7DB4FF;
+  --hero-border: rgba(255, 255, 255, 0.14);
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 /* Base typography and body reset */
@@ -20,18 +86,113 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  min-height: 100svh;
+}
+
+.dark h1:not([class*="text-brand-yellow"]):not([class*="text-brand-blue"]):not([class*="text-emerald"]):not([class*="text-transparent"]),
+.dark h2:not([class*="text-brand-yellow"]):not([class*="text-brand-blue"]):not([class*="text-emerald"]):not([class*="text-transparent"]),
+.dark h3:not([class*="text-brand-yellow"]):not([class*="text-brand-blue"]):not([class*="text-emerald"]):not([class*="text-transparent"]),
+.dark h4:not([class*="text-brand-yellow"]):not([class*="text-brand-blue"]):not([class*="text-emerald"]):not([class*="text-transparent"]) {
+  color: var(--text-primary);
+}
+
+/* Ensure text-brand-navy adapts in dark mode when not intentionally on yellow/bright elements */
+.dark .text-brand-navy:not([class*="dark:text-"]):not(.bg-brand-yellow):not([class*="bg-brand-yellow"]):not(.bg-brand-yellow *):not([class*="bg-brand-yellow"] *) {
+  color: var(--text-primary);
+}
+
+/* Ensure text-brand-blue has high contrast in dark mode */
+.dark .text-brand-blue:not([class*="dark:text-"]) {
+  color: #93C5FD;
+}
+
+/* Yellow primary CTA buttons and accents must strictly keep deep navy text (#0B1F38) in BOTH themes */
+.bg-brand-yellow,
+.dark .bg-brand-yellow,
+[class*="bg-brand-yellow"],
+.dark [class*="bg-brand-yellow"] {
+  color: #0B1F38;
+}
+
+/* Ensure sections and cards with bg-white adapt to dark surface */
+.dark section.bg-white:not([class*="dark:bg-"]),
+.dark div.bg-white:not([class*="dark:bg-"]) {
+  background-color: var(--surface-card);
 }
 
 body {
-  background-color: var(--surface-base);
-  color: var(--ink-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
+  min-height: 100svh;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
 }
 
-/* Accessible focus visible treatment */
+/* Mobile-first safe area utilities */
+.pt-safe {
+  padding-top: max(env(safe-area-inset-top, 0px), 0px);
+}
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 0px);
+}
+.min-h-svh {
+  min-height: 100svh;
+}
+.h-svh {
+  height: 100svh;
+}
+
+/* Mobile animation and performance constraints: transform & opacity only, no heavy blurs */
+@media (max-width: 768px) {
+  * {
+    /* Prevent heavy composite operations on low-end mobile CPUs */
+    text-rendering: optimizeSpeed;
+  }
+}
+
+/* Prompt H Ticker Animation */
+@keyframes ticker-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.hero-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-slide 40s linear infinite;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-ticker-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ticker-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Accessible focus visible treatment (at least 3:1 contrast against surface in both themes) */
 :focus-visible {
-  outline: 2px solid var(--brand-blue);
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.dark :focus-visible {
+  outline: 2px solid var(--accent-yellow);
   outline-offset: 2px;
 }
 
@@ -39,6 +200,11 @@ body {
 ::selection {
   background-color: #0B1F38;
   color: #FFC107;
+}
+
+.dark ::selection {
+  background-color: #FFC107;
+  color: #071322;
 }
 
 /* Reduced motion preference */
@@ -50,27 +216,22 @@ body {
   *,
   *::before,
   *::after {
+    animation: none !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transform: none !important;
+  }
+
+  body {
+    transition: none !important;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* Normal browser scrollbar restored */
 
-::-webkit-scrollbar-track {
-  background: #F1F5F9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+/* Intro Loader zero-flash and visibility control */
+html:not([data-intro="play"]) #intro-loader-root {
+  display: none !important;
 }

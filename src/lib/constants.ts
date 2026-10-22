@@ -1,49 +1,72 @@
 /**
- * Verified Owner Profile & Portfolio Constants
- * Strictly reflects verified information provided by the owner.
+ * Owner Profile & Portfolio Constants
+ * Strictly reflects factual information provided by the owner.
+ * Location-independent professional profile.
  */
+
+export const WHATSAPP_BASE_URL = "https://wa.me/message/C7IX2L6KIRPDA1";
+export const WHATSAPP_PREFILLED_MESSAGE =
+  "Hi Hamza, I came across your portfolio and would like to discuss a project with you.";
+
+export const getWhatsAppUrl = (message: string = WHATSAPP_PREFILLED_MESSAGE): string => {
+  return `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(message)}`;
+};
+
+export const EMAIL_SUBJECT = "Project Inquiry — Hamza Barki Portfolio";
+export const EMAIL_BODY_TEMPLATE =
+  "Hi Hamza,\n\nI would like to discuss a new project with you.\n\nProject Scope:\nTimeline:\nEstimated Budget:\n\nLooking forward to speaking with you!";
+
+export const getMailtoUrl = (
+  subject: string = EMAIL_SUBJECT,
+  body: string = EMAIL_BODY_TEMPLATE
+): string => {
+  return `mailto:hamzabarki330@gmail.com?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+};
 
 export const OWNER_PROFILE = {
   name: "Hamza Barki",
-  title: "Full-Stack Developer",
-  tagline: "Building digital products that solve real business problems — from idea to deployment.",
-  location: "Peshawar, Pakistan",
+  title: "Full-Stack Developer & Product Builder",
+  tagline: "I build digital products that solve real business problems — from idea to deployment.",
+  supportingCopy: "I build websites, online stores, web apps and custom software for businesses, schools and startups.",
   education: {
     degree: "BS Computer Science",
-    institution: "University of Peshawar",
-    status: "Final Year (7th Semester)",
+    status: "Final Year",
   },
   training: [
     {
-      title: "Full-Stack Web Development",
-      organization: "Saylani Mass IT Training (SMIT)",
+      title: "Completed a Full-Stack Web Development course at SMIT",
+      organization: "SMIT",
       status: "Completed",
     },
   ],
-  journey: {
-    started: 2021,
-    professionalFocus: 2025,
-    approxProjects: 20,
-  },
   availability: {
-    status: "Available for selected projects",
-    badgeText: "Available for selected projects",
+    status: "Available for selected projects.",
+    badgeText: "Available for selected projects.",
     isAvailable: true,
+  },
+  metadata: {
+    location: "Pakistan / Open to Remote Worldwide",
+    timezone: "UTC+5 (PKT) — Flexible overlap with US, UK & EU",
+    sla: "Responses within 24 hours",
   },
   contacts: {
     email: "hamzabarki330@gmail.com",
-    whatsapp: "https://wa.me/message/C7IX2L6KIRPDA1",
+    whatsapp: getWhatsAppUrl(),
+    whatsappRaw: WHATSAPP_BASE_URL,
+    mailto: getMailtoUrl(),
     github: "https://github.com/hamza-barki",
     facebook: "https://web.facebook.com/profile.php?id=61573175301827",
   },
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Selected Work", href: "#work" },
-  { label: "What I Build", href: "#capabilities" },
-  { label: "How I Work", href: "#process" },
+  { label: "Work", href: "#work" },
+  { label: "Build", href: "#capabilities" },
+  { label: "Process", href: "#process" },
+  { label: "Stack", href: "#stack" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const BRAND_COLORS = {

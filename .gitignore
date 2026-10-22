@@ -25,6 +25,17 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+!.env.example
+
+# verification scripts, screenshots & reports
+scripts/
+screenshots/
+*.pdf
+*.html
+
+# IDE configs
+.vscode/
+.idea/
 
 # typescript
 *.tsbuildinfo

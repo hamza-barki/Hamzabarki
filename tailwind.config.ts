@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -48,47 +49,50 @@ const config: Config = {
             muted: "#FFE082",
           },
           blue: {
-            DEFAULT: "#2E80FF", // Secondary Tech Blue
-            hover: "#1A6EEB",
+            DEFAULT: "#1D4ED8", // Accessible High-Contrast Tech Blue
+            50: "#EBF3FF",
+            100: "#D6E7FF",
+            hover: "#1E40AF",
             subtle: "#EBF3FF",
             muted: "#93C5FD",
           },
           green: {
-            DEFAULT: "#00B87A", // Verified Success Green
+            DEFAULT: "#00B87A", // Brand Green
             subtle: "#E6F8F1",
             border: "#A7F3D0",
           },
         },
         // Semantic Surfaces
         surface: {
-          base: "#F5F7FA",       // Canvas background
-          card: "#FFFFFF",       // Primary container background
-          muted: "#EDF2F7",      // Secondary recessed container
-          elevated: "#FFFFFF",   // Modals / popovers / tooltips
-          dark: "#0B1F38",       // Deep inverted sections
-          "dark-card": "#132A4A",// Dark card surface
+          base: "var(--bg-primary)",       // Canvas background
+          card: "var(--surface-card)",     // Primary container background
+          muted: "var(--surface-muted)",   // Secondary recessed container
+          elevated: "var(--surface-card)", // Modals / popovers / tooltips
+          dark: "#0B1F38",                 // Deep inverted sections
+          "dark-card": "#132A4A",          // Dark card surface
           "dark-muted": "#1A365D",
         },
         // Semantic Borders
         border: {
-          subtle: "#E2E8F0",
-          medium: "#CBD5E1",
+          subtle: "var(--border-color)",
+          medium: "var(--border-medium)",
           strong: "#94A3B8",
           dark: "#1E3A5F",
           "dark-subtle": "#162E4C",
         },
         // Semantic Text Hierarchy
         ink: {
-          DEFAULT: "#1E293B",     // Primary text
-          secondary: "#475569",   // Descriptive / supporting copy
-          muted: "#64748B",       // Metadata / captions / timestamps
-          subtle: "#94A3B8",      // Placeholder / inactive
-          inverted: "#F8FAFC",    // White text on dark navy
+          DEFAULT: "var(--text-primary)",     // Primary text
+          secondary: "var(--text-secondary)", // Descriptive / supporting copy
+          muted: "var(--text-muted)",         // Metadata / captions / timestamps
+          subtle: "#94A3B8",                  // Placeholder / inactive
+          inverted: "#F8FAFC",                // White text on dark navy
           "inverted-muted": "#94A3B8",
         },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "-apple-system", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
         heading: ["var(--font-heading)", "var(--font-sans)", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
@@ -115,8 +119,15 @@ const config: Config = {
         wider: "0.05em",
         widest: "0.1em",
       },
+      spacing: {
+        13: "3.25rem",
+      },
+      transitionDuration: {
+        250: "250ms",
+      },
       animation: {
         "pulse-subtle": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "spin-slow": "spin 25s linear infinite",
       },
     },
   },

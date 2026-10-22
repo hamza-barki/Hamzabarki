@@ -1,53 +1,35 @@
-/**
- * Strict TypeScript types for Project and Case Study structures.
- */
-
-export type ProjectStatus = "production" | "deployed" | "in-development" | "concept";
-
-export type ProjectCategory =
-  | "Business System / POS"
-  | "Collaborative Web App"
-  | "Marketplace Concept"
-  | "Web Application";
-
-export interface ProjectMetric {
-  label: string;
-  value: string;
-  note?: string;
-}
-
-export interface ProjectTechStack {
-  category: "Frontend" | "Backend" | "Database" | "Hardware / Infra" | "Deployment";
-  tools: string[];
-}
-
-export interface ProjectFeature {
+export interface ProjectDecision {
   title: string;
   description: string;
-  technicalDetail?: string;
 }
 
-export interface Project {
+export interface CaseStudyProject {
   id: string;
   slug: string;
+  numberLabel: string;
   title: string;
-  subtitle: string;
-  category: ProjectCategory;
-  status: ProjectStatus;
-  statusLabel: string;
-  clientType: string;
-  year: string;
+  typeLabel: string;
   summary: string;
-  problemStatement: string;
-  solutionOverview: string;
-  verifiedFeatures: ProjectFeature[];
-  techStack: ProjectTechStack[];
-  verifiedHighlights: string[];
-  links?: {
-    live?: string;
-    github?: string;
-    demoNote?: string;
+  facts: {
+    role: string;
+    type: string;
+    status: string;
+    tools: string;
   };
-  featured: boolean;
-  coverImage?: string;
+  screenshot: {
+    src: string;
+    alt: string;
+    chip: string;
+    width: number;
+    height: number;
+  };
+  overview: string;
+  problem: string;
+  whatIBuilt: string;
+  features: string[];
+  decisions: ProjectDecision[];
+  nextProject: {
+    slug: string;
+    title: string;
+  };
 }

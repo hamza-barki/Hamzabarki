@@ -1,0 +1,19 @@
+# Vercel Deployment Ignore Rules
+# Keeps the build payload lightweight and fast
+
+# Development and audit scripts
+scripts/
+screenshots/
+
+# Generated local audit reports and docs
+*.pdf
+*.html
+*.mjs
+!next.config.mjs
+
+# Environment and sensitive keys
+.env*.local
+
+# Editor configs
+.vscode/
+.DS_Store
